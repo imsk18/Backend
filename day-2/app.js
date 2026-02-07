@@ -1,5 +1,3 @@
-//✅ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-//✅ npx nodemon fileName.js(app.js)
 
 
 const express = require("express")
