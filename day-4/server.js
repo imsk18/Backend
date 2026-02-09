@@ -17,7 +17,7 @@ app.get("/ipl", (req, res) =>{
     res.send(ipl)
 
 })
-app.delete("/ipl/:index",(req,res)=>{
+app.delete("/ipl/:index",(req ,res)=>{
     delete ipl[req.params.index]
     res.send("ipl details deleted successfully ")
 })
