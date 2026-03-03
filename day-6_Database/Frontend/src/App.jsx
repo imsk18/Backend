@@ -4,8 +4,12 @@ import axios from "axios"
 function App() {
 
   const [ notes, setNotes ] = useState([])
+  const [Formvalue, setFormvalue] = useState({
+    title:'',
+    description:''
+  })
 
-  console.log("hello Integration")
+ 
 
   function fetchNotes() {
     axios.get("http://localhost:3000/notes")
@@ -13,13 +17,25 @@ function App() {
         setNotes(res.data.notes)
       })
   }
+  useEffect(()=>{
+handleSubmit
+  },[])
+  
 
   useEffect(() => {
     fetchNotes()
+    
   }, [])
 
   function handleSubmit(e) {
     e.preventDefault()
+    setFormvalue({
+      title:'',
+      description:''
+    })
+   
+   
+
 
     const { title, description } = e.target.elements
 
@@ -45,6 +61,8 @@ function App() {
       fetchNotes()
     })
 }
+
+ 
  
 
 
@@ -52,8 +70,40 @@ function App() {
     <>
 
       <form className='create-form' onSubmit={handleSubmit}  >
-        <input name='title' type="text" placeholder='Enter title' />
-        <input name='description' type="text" placeholder='Enter description' />
+        <input name='title'
+         type="text"
+          placeholder='Enter title'
+          required
+          value={Formvalue.title}
+           onChange={(e)=>{
+            setFormvalue({
+              ...Formvalue,
+              [e.target.name]:e.target.value
+            })
+           }}
+         
+          
+      
+
+           />
+        <input name='description'
+         type="text"
+          placeholder='Enter description'
+          required 
+           value={Formvalue.description}
+
+           onChange={(e)=>{
+            setFormvalue({
+              ...Formvalue,
+              [e.target.name]:e.target.value
+            })
+           }}
+           
+         
+          
+          />
+          
+
         <button>Create note</button>
       </form>
 
