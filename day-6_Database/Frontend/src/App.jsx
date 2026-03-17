@@ -96,11 +96,10 @@ handleSubmit
             setFormvalue({
               ...Formvalue,
               [e.target.name]:e.target.value
+
             })
            }}
            
-         
-          
           />
           
 
